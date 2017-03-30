@@ -71,7 +71,7 @@ input = applyTransformation(input)
 output.write(input)
 
 # parse book-product.json file and create document attributes
-with open('book-product.json') as data_file:
+with open('../book-product.json') as data_file:
     data = json.load(data_file)
 
 variables = data['variables']
@@ -100,8 +100,6 @@ output = open(os.path.join(targetdir, 'document-attributes.adoc'), 'w')
 for attribute in attributeList:
     for k in attribute.keys():
         output.write(':book_' + k + ": " + attribute[k] + "\n")
-
-print "Transformation complete!"
 
 
 
