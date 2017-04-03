@@ -32,6 +32,7 @@ GUIDE=$1
 function buildGuide
 {
     GUIDE=$1
+    CURRENT_DIRECTORY=$(pwd)
 
     echo "***********************************************************************************************************"
     echo "$TOOL: $GUIDE"
@@ -46,13 +47,13 @@ function buildGuide
     if [ "$TOOL" = "asciidoctor" ]; then
         asciidoctor -dbook -a toc -o target/master.html target/master.adoc
         echo ""
-        echo "Built $GUIDE/target/master.html"
+        echo "Built file://$CURRENT_DIRECTORY/$GUIDE/target/master.html"
     fi
 
     if [ "$TOOL" = "ccutil" ]; then
         ccutil compile --lang en_US --format html-single --main-file target/master.adoc
         echo ""
-        echo "Built $GUIDE/build/tmp/en-US/html-single/index.html"
+        echo "Built file://$CURRENT_DIRECTORY/$GUIDE/build/tmp/en-US/html-single/index.html"
     fi
    
     cd ..
